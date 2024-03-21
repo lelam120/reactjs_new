@@ -3,9 +3,30 @@ import { Container } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import ListGroup from 'react-bootstrap/ListGroup'
+import Add from '../common/list';
 
 function Listofbook(props){
-    
+    const [name,Setname] = useState([])
+    const book = 
+    {
+        Title : "",
+        Author:"",
+        Favourite:"false"
+    }
+    useEffect(function(){
+
+    },[addbook]);
+    function title(e){  
+        book.Title = e.target.value
+    }
+    function author(e){
+        book.Author = e.target.value
+    }
+    function addbook(){
+            return(
+                Setname([...name,book])   
+            )
+        } 
     return(
         <>
         <Container>
@@ -72,7 +93,7 @@ function Listofbook(props){
                 Nguyễn Hùng Sơn
             </div>
         </ListGroup.Item>
-    
+        <Add data={name} />
         </ListGroup>
 
         <Form.Select aria-label="Default select example" style={{marginTop:'20px',marginBottom:'20px'}}>
@@ -85,11 +106,11 @@ function Listofbook(props){
         <h3>Add A New Book</h3>
 
         <Form>
-        <Form.Group className="mb-3" controlId="formGroupTitle">
+        <Form.Group className="mb-3" controlId="formGroupTitle" onChange={title}>
             <Form.Label>Title</Form.Label>
             <Form.Control type="Title"/>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupAuthor">
+        <Form.Group className="mb-3" controlId="formGroupAuthor" onChange={author}>
             <Form.Label>Author</Form.Label>
             <Form.Control type="Author"/>
         </Form.Group>
@@ -100,7 +121,7 @@ function Listofbook(props){
             id="custom-switch"
             label="Favorite"
         />
-        <button style={{backgroundColor: 'green',color: 'white',borderRadius: '6px'}}>
+        <button style={{backgroundColor: 'green',color: 'white',borderRadius: '6px'}} onClick={addbook} >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
         </svg>
